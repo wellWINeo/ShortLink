@@ -1,0 +1,9 @@
+[server]
+port=8000
+static_files="website"
+
+[db]
+host="127.0.0.1"
+name="links_db"
+links="links" # collection for links in database
+port=27017
