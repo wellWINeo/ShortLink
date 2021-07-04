@@ -43,7 +43,6 @@ func (l *LinksService) GetLink(shortLink string) (string, error) {
 }
 
 func (l *LinksService) GetQR(shortLink string) ([]byte, string, error) {
-	log.Printf("GetQR(): %s", shortLink)
 	link, err := l.GetLink(shortLink)
 	if err != nil {
 		return nil, "", err

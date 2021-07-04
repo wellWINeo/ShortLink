@@ -5,12 +5,23 @@
 <head>
   <meta charset="utf-8" />
   <title>QR to link</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/website/css/qr.css" />
 </head>
 
 <body>
-  <img src="data:image/png;charset=utf-8;base64, {{ .ImageBase64 }}" />
-  <label>{{ .Desc }}</label>
+  <div class="container_div">
+    <img src="data:image/png;charset=utf-8;base64, {{ .ImageBase64 }}" />
+    <br />
+    <label>
+      Original link:
+      <a href="{{ .OriginLink }}">{{ .OriginLink }}</a>
+    </label>
+    <br />
+    <label>
+      Generated link:
+      <a href="{{ .ShortLink }}">{{ .ShortLink }}</a>
+    </label>
+  </div>
 </body>
 
 </html>

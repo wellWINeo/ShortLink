@@ -3,6 +3,7 @@ package handler
 import (
 	"bytes"
 	"encoding/base64"
+	"fmt"
 	"html/template"
 	"net/http"
 	"path"
@@ -45,7 +46,8 @@ func (h *Handler) getLink(c *gin.Context) {
 
 type templateStruct struct {
 	ImageBase64 string
-	Desc        string
+	OriginLink  string
+	ShortLink   string
 }
 
 func (h *Handler) GetQR(c *gin.Context) {
@@ -68,7 +70,8 @@ func (h *Handler) GetQR(c *gin.Context) {
 
 	err = ts.Execute(&buf, templateStruct{
 		ImageBase64: base64.StdEncoding.EncodeToString(img),
-		Desc:        link,
+		OriginLink:  link,
+		ShortLink:   fmt.Sprintf("http://%s/%s", h.domain, url),
 	})
 	if err != nil {
 		NewErrorResponse(c, http.StatusInternalServerError, err.Error())

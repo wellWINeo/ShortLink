@@ -17,28 +17,9 @@ body {
     background-color: var(--background-base2);
 }
 
-label {
-    color: var(--content-color);
-}
-
-form {
-    display: inline-block;
-    padding: 10px;
-    margin: 0 25% 0 25%;
-}
-
-input {
-    margin:5% 0;
-}
-
 .container_div {
-    margin: 25% 35% 25% 35%;
-    background-color: var(--background-base3); 
-    width: 30%;
-}
-
-.submit {
-    margin: 0 25% 0 25%;
-    color: var(--background-base2);
-    background-color: var(--cyan);
+    margin: 25% 25% 25% 25%;
+    background-color: var(--background-base3);
+    width: 50%;
+    padding: 10px;
 }

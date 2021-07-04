@@ -1,0 +1,65 @@
+:root {
+    --background-base2: #eee8d5;
+    --background-base3: #fdf6e3;
+    --content-color: #586e75;
+    --yellow: #b58900;
+    --orange: #cb4b16;
+    --red: #dc322f;
+    --magenta: #d33682;
+    --violet: #6c71c4;
+    --blue: #268bd2;
+    --cyan: #2aa198;
+    --green: #859900;
+}
+
+body {
+    text-align: center;
+    background-color: var(--background-base2);
+    color: var(--content-color);
+}
+
+label {
+    color: var(--content-color);
+}
+
+form {
+    display: inline-block;
+    padding: 10px;
+    margin: 0 25% 0 25%;
+}
+
+input {
+    margin:5% 0;
+}
+
+a {
+    color: var(--magenta);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    margin: 0 25%;
+    width: 50%;
+}
+
+html {
+    min-height: 100%;
+}
+
+.header {
+    background-color: var(--background-base3);
+    color: var(--violet)
+}
+
+.container_div {
+    margin: 25% 35% 25% 35%;
+    background-color: var(--background-base3); 
+    width: 30%;
+}
+
+.submit {
+    margin: 0 25% 0 25%;
+    color: var(--background-base2);
+    background-color: var(--cyan);
+}

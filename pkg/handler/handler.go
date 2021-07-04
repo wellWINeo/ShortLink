@@ -10,12 +10,15 @@ import (
 type Handler struct {
 	services    *service.Service
 	staticFiles string
+	domain      string
 }
 
-func NewHandler(services *service.Service, staticFiles string) *Handler {
+func NewHandler(services *service.Service, staticFiles string,
+	domain string) *Handler {
 	return &Handler{
-		services: services,
+		services:    services,
 		staticFiles: staticFiles,
+		domain: domain,
 	}
 }
 

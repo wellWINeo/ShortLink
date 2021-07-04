@@ -1,6 +1,7 @@
 [server]
 port=8000
 static_files="website"
+domain="localhost:8000"
 
 [db]
 host="127.0.0.1"

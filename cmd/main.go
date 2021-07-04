@@ -43,7 +43,9 @@ func main() {
 
 	repos := repository.NewRepository(db)
 	services := service.NewService(repos)
-	handlers := handler.NewHandler(services, viper.GetString("server.static_files"))
+	handlers := handler.NewHandler(services,
+		viper.GetString("server.static_files"),
+		viper.GetString("server.domain"))
 	srv := new(ShortLink.Server)
 
 	err = srv.Run(viper.GetInt("server.port"), handlers.InitRoutes())
