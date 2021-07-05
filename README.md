@@ -9,3 +9,5 @@ With this service you can make you big and ugly links shorter and prettier. You 
 - [ ] https support
 - [ ] connect to MongoDB with login & password
 - [ ] fix some issues in layouts
+- [ ] history
+- [ ] deleting after timeout
