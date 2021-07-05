@@ -1,0 +1,19 @@
+[Unit]
+Description=ShortLink backend service
+After=network.target mongod.target
+
+[Service]
+Type=simple
+# your user & group
+User=user
+Group=group
+
+# just example
+WorkingDirectory=/opt/ShortLink
+ExecStart=/usr/local/bin/ShortLink
+Restart=on-failure
+RestartSec=10
+Environment=GIN_MODE=release
+
+[Install]
+WantedBy=multi-user.target

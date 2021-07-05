@@ -4,7 +4,7 @@ static_files="website"
 domain="localhost:8000"
 
 [db]
-host="127.0.0.1"
+host="localhost"
 name="links_db"
 links="links" # collection for links in database
 port=27017
