@@ -21,7 +21,7 @@ func main() {
 	client, err := repository.NewMongo(repository.Config{
 		Host: viper.GetString("db.host"),
 		Port: viper.GetInt("db.port"),
-		Ctx: &ctx,
+		Ctx:  &ctx,
 	})
 
 	defer func() {

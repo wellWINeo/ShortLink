@@ -28,9 +28,9 @@ func (h *Handler) createLink(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{
-		"short_link": shortLink,
-	})
+	c.Request.Method = "GET"
+	c.Redirect(http.StatusMovedPermanently,
+		fmt.Sprintf("http://%s/qr/%s", h.domain, shortLink))
 }
 
 func (h *Handler) getLink(c *gin.Context) {
@@ -41,7 +41,7 @@ func (h *Handler) getLink(c *gin.Context) {
 		return
 	}
 
-	c.Redirect(http.StatusPermanentRedirect, originLink)
+	c.Redirect(http.StatusMovedPermanently, originLink)
 }
 
 type templateStruct struct {
@@ -63,6 +63,7 @@ func (h *Handler) GetQR(c *gin.Context) {
 
 	templatePath := path.Join(h.staticFiles, "qr.htmpl")
 	ts, err := template.ParseFiles(templatePath)
+
 	if err != nil {
 		NewErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
@@ -73,6 +74,7 @@ func (h *Handler) GetQR(c *gin.Context) {
 		OriginLink:  link,
 		ShortLink:   fmt.Sprintf("http://%s/%s", h.domain, url),
 	})
+
 	if err != nil {
 		NewErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return

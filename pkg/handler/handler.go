@@ -18,7 +18,7 @@ func NewHandler(services *service.Service, staticFiles string,
 	return &Handler{
 		services:    services,
 		staticFiles: staticFiles,
-		domain: domain,
+		domain:      domain,
 	}
 }
 

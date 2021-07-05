@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"hash/adler32"
-	"log"
 	"net/url"
+	"strings"
 
 	"github.com/wellWINeo/ShortLink/pkg/repository"
 
@@ -35,7 +35,13 @@ func (l *LinksService) CreateLink(originLink string) (string, error) {
 	// as short link
 	hash := adler32.Checksum([]byte(originLink))
 
-	return l.repo.CreateLink(fmt.Sprint(hash), originLink)
+	link, err := l.repo.CreateLink(fmt.Sprint(hash), originLink)
+
+	// find already stored value
+	if err != nil && strings.Contains(err.Error(), "duplicate key") {
+		return fmt.Sprint(hash), nil
+	}
+	return link, err
 }
 
 func (l *LinksService) GetLink(shortLink string) (string, error) {

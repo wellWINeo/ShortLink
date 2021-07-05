@@ -24,7 +24,7 @@ func (l *LinksMongo) CreateLink(shortLink, originLink string) (string, error) {
 		OriginLink: originLink,
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 
 	insertResult, err := l.collection.InsertOne(ctx, link)
 	if err != nil {
@@ -35,7 +35,7 @@ func (l *LinksMongo) CreateLink(shortLink, originLink string) (string, error) {
 
 func (l *LinksMongo) GetLink(shortLink string) (string, error) {
 	var link ShortLink.Link
-	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 	filter := bson.M{"_id": shortLink}
 	err := l.collection.FindOne(ctx, filter).Decode(&link)
 	if err != nil {
