@@ -11,19 +11,21 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type inputFrom struct {
-	OriginLink string `form:"origin_link"`
-}
-
 func (h *Handler) createLink(c *gin.Context) {
-	var input inputFrom
-	if err := c.Bind(&input); err != nil {
-		NewErrorResponse(c, http.StatusBadRequest, err.Error())
+	fmt.Print("Handler execution started\n")
+
+	link := c.PostForm("origin_link")
+
+	if link == "" {
+		NewErrorResponse(c, http.StatusBadRequest, "Can't parse value from Form")
 		return
 	}
 
-	shortLink, err := h.services.CreateLink(input.OriginLink)
+	fmt.Printf("Value: %s\n", c.PostForm("origin_link"))
+
+	shortLink, err := h.services.CreateLink(link)
 	if err != nil {
+		fmt.Printf("Error after CreateLink service: %s\n", err.Error())
 		NewErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -34,7 +36,14 @@ func (h *Handler) createLink(c *gin.Context) {
 }
 
 func (h *Handler) getLink(c *gin.Context) {
+	fmt.Printf("Path: %s\n", c.Request.URL)
 	url := c.Param("url")
+	fmt.Printf("Url: %s\n", url)
+
+	if url == "" {
+		NewErrorResponse(c, http.StatusBadRequest, "Empty URL")
+	}
+
 	originLink, err := h.services.GetLink(url)
 	if err != nil {
 		NewErrorResponse(c, http.StatusNotFound, err.Error())
@@ -50,7 +59,7 @@ type templateStruct struct {
 	ShortLink   string
 }
 
-func (h *Handler) GetQR(c *gin.Context) {
+func (h *Handler) getQR(c *gin.Context) {
 	var buf bytes.Buffer
 
 	url := c.Param("url")

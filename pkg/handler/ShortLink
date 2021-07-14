@@ -1,0 +1,25 @@
+mode: set
+github.com/wellWINeo/ShortLink/pkg/handler/response.go:13.67,16.2 2 1
+github.com/wellWINeo/ShortLink/pkg/handler/static.go:12.44,15.16 3 0
+github.com/wellWINeo/ShortLink/pkg/handler/static.go:21.2,21.45 1 0
+github.com/wellWINeo/ShortLink/pkg/handler/static.go:15.16,19.3 2 0
+github.com/wellWINeo/ShortLink/pkg/handler/static.go:24.45,26.2 0 0
+github.com/wellWINeo/ShortLink/pkg/handler/handler.go:17.26,23.2 1 1
+github.com/wellWINeo/ShortLink/pkg/handler/handler.go:25.44,37.2 8 0
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:14.46,19.16 3 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:24.2,27.16 3 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:33.2,35.55 2 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:19.16,22.3 2 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:27.16,31.3 3 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:38.43,43.15 4 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:47.2,48.16 2 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:53.2,53.53 1 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:43.15,45.3 1 0
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:48.16,51.3 2 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:62.41,68.16 4 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:73.2,76.16 3 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:81.2,87.16 2 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:92.2,92.49 1 1
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:68.16,71.3 2 0
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:76.16,79.3 2 0
+github.com/wellWINeo/ShortLink/pkg/handler/links.go:87.16,90.3 2 0

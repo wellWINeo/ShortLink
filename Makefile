@@ -10,7 +10,8 @@ BINARY=ShortLink
 all: build
 
 build:
-	go buld ${ENTRYPOINT} -o {BINARY}
+	go build ${ENTRYPOINT}
+	mv main ${BINARY}
 
 run: build
 	./{BINARY}
@@ -18,5 +19,11 @@ run: build
 clean:
 	go clean
 	rm ${BINARY}
+
+generate:
+	go generate ./...
+
+test:
+	go test ./...
 
 # end

@@ -27,7 +27,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	router.POST("/create", h.createLink)
 	router.GET("/:url", h.getLink)
-	router.GET("/qr/:url", h.GetQR)
+	router.GET("/qr/:url", h.getQR)
 	router.GET("/", h.getIndex)
 	// router.GET("/about", h.getAbout)
 	router.Static("/website/css", path.Join(h.staticFiles, "css"))
