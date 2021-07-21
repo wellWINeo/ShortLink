@@ -162,7 +162,7 @@ func TestHandler_getLink(t *testing.T) {
 		router.GET("/:url", h.getLink)
 
 		w := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", "/" + testCase.input, nil)
+		req, _ := http.NewRequest("GET", "/"+testCase.input, nil)
 
 		router.ServeHTTP(w, req)
 
@@ -192,7 +192,7 @@ func extractTagAttr(body, tag, attr string) ([]string, error) {
 		}
 
 		tagName, ok := tokenizer.TagName()
-		if  ok && string(tagName) == tag {
+		if ok && string(tagName) == tag {
 			for {
 				key, value, more := tokenizer.TagAttr()
 				if string(key) == attr {
@@ -239,7 +239,7 @@ func TestHandler_getQR(t *testing.T) {
 		router.GET("/qr/:url", h.getQR)
 
 		w := httptest.NewRecorder()
-		req, _ := http.NewRequest("GET", "/qr/" + testCase.input, nil)
+		req, _ := http.NewRequest("GET", "/qr/"+testCase.input, nil)
 
 		router.ServeHTTP(w, req)
 

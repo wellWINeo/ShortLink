@@ -1,7 +1,9 @@
 package ShortLink
 
+import "time"
+
 type Link struct {
-	//Id bson.ObjectId `bson:"_id"`
-	Id         string `bson:"_id"`
-	OriginLink string `bson:"origin_link"`
+	Id         string    `bson:"_id"`
+	OriginLink string    `bson:"origin_link"`
+	CreatedAt  time.Time `bson:"createdAt"`
 }

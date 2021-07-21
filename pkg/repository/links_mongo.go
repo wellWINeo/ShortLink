@@ -22,6 +22,7 @@ func (l *LinksMongo) CreateLink(shortLink, originLink string) (string, error) {
 	link := ShortLink.Link{
 		Id:         shortLink,
 		OriginLink: originLink,
+		CreatedAt:  time.Now(),
 	}
 
 	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
@@ -31,6 +32,14 @@ func (l *LinksMongo) CreateLink(shortLink, originLink string) (string, error) {
 		return "", err
 	}
 	return insertResult.InsertedID.(string), nil
+}
+
+func (l *LinksMongo) UpdateTTL(shortLink string) error {
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
+	filter := bson.M{"_id": shortLink}
+	update := bson.M{"$set": bson.M{"createdAt": time.Now()}}
+	_, err := l.collection.UpdateOne(ctx, filter, update, nil)
+	return err
 }
 
 func (l *LinksMongo) GetLink(shortLink string) (string, error) {

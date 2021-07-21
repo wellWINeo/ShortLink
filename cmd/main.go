@@ -10,6 +10,9 @@ import (
 	"github.com/wellWINeo/ShortLink/pkg/handler"
 	"github.com/wellWINeo/ShortLink/pkg/repository"
 	"github.com/wellWINeo/ShortLink/pkg/service"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"gopkg.in/mgo.v2/bson"
 )
 
 func main() {
@@ -39,7 +42,13 @@ func main() {
 		log.Fatalf("Can't ping db: %s", err.Error())
 	}
 
+	indexModel := mongo.IndexModel{
+		Keys:    bson.M{"createdAt": 1},
+		Options: options.Index().SetExpireAfterSeconds(viper.GetInt32("db.ttl") * 60),
+	}
+
 	db := client.Database(viper.GetString("db.name"))
+	db.Collection(viper.GetString("db.links"), nil).Indexes().CreateOne(ctx, indexModel, nil)
 
 	repos := repository.NewRepository(db)
 	services := service.NewService(repos)

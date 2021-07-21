@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"hash/adler32"
 	"net/url"
-	"strings"
 
 	"github.com/wellWINeo/ShortLink/pkg/repository"
+	"go.mongodb.org/mongo-driver/mongo"
 
 	qrcode "github.com/skip2/go-qrcode"
 )
@@ -38,8 +38,10 @@ func (l *LinksService) CreateLink(originLink string) (string, error) {
 	link, err := l.repo.CreateLink(fmt.Sprint(hash), originLink)
 
 	// find already stored value
-	if err != nil && strings.Contains(err.Error(), "duplicate key") {
-		return fmt.Sprint(hash), nil
+	if mongo.IsDuplicateKeyError(err) {
+		short := fmt.Sprint(hash)
+		err := l.repo.UpdateTTL(short)
+		return fmt.Sprint(hash), err
 	}
 	return link, err
 }

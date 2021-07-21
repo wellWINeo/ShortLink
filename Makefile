@@ -14,7 +14,7 @@ build:
 	mv main ${BINARY}
 
 run: build
-	./{BINARY}
+	./${BINARY}
 
 clean:
 	go clean

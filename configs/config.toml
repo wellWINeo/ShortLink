@@ -7,4 +7,5 @@ domain="localhost:8000"
 host="172.17.0.2"
 name="links_db"
 links="links" # collection for links in database
+ttl=720 # in minutes (default=12h)
 port=27017
